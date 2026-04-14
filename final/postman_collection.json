@@ -1,0 +1,1350 @@
+{
+  "info": {
+    "name": "College Management API",
+    "description": "Complete Postman collection generated from Swagger UI. Bearer token is pre-set on all non-auth routes.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://isg-backend-m0ky.onrender.com",
+      "type": "string"
+    },
+    {
+      "key": "bearerToken",
+      "value": "YOUR_JWT_TOKEN_HERE",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register a new user",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/auth/signup", "host": ["{{baseUrl}}"], "path": ["api", "auth", "signup"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"johndoe\",\n  \"password\": \"secret123\",\n  \"role\": \"STUDENT\",\n  \"linkedId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/auth/login", "host": ["{{baseUrl}}"], "path": ["api", "auth", "login"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"johndoe\",\n  \"password\": \"secret123\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        {
+          "name": "Get Dashboard Stats",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/dashboard/stats", "host": ["{{baseUrl}}"], "path": ["api", "dashboard", "stats"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Students",
+      "item": [
+        {
+          "name": "Get All Students",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/students", "host": ["{{baseUrl}}"], "path": ["api", "students"] }
+          }
+        },
+        {
+          "name": "Create Student",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/students", "host": ["{{baseUrl}}"], "path": ["api", "students"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"John Doe\",\n  \"rollNo\": \"CS2021001\",\n  \"email\": \"john.doe@college.edu\",\n  \"phone\": \"9876543210\",\n  \"dateOfBirth\": \"2000-05-15\",\n  \"gender\": \"MALE\",\n  \"address\": \"123 Main Street, City\",\n  \"semester\": 3,\n  \"admissionYear\": 2021,\n  \"courseId\": 1,\n  \"departmentId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get Student by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/students/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "students", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Update Student",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/students/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "students", "{{id}}"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"John Doe Updated\",\n  \"rollNo\": \"CS2021001\",\n  \"email\": \"john.doe@college.edu\",\n  \"phone\": \"9876543210\",\n  \"dateOfBirth\": \"2000-05-15\",\n  \"gender\": \"MALE\",\n  \"address\": \"456 New Street, City\",\n  \"semester\": 4,\n  \"admissionYear\": 2021,\n  \"courseId\": 1,\n  \"departmentId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Delete Student",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/students/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "students", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Patch Student",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/students/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "students", "{{id}}"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone\": \"9876543211\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get My Student Profile",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/students/me", "host": ["{{baseUrl}}"], "path": ["api", "students", "me"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "PG Students",
+      "item": [
+        {
+          "name": "Get All PG Students",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/pg-students", "host": ["{{baseUrl}}"], "path": ["api", "pg-students"] }
+          }
+        },
+        {
+          "name": "Create PG Student",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/pg-students", "host": ["{{baseUrl}}"], "path": ["api", "pg-students"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Jane Smith\",\n  \"rollNo\": \"MCS2022001\",\n  \"email\": \"jane.smith@college.edu\",\n  \"phone\": \"9876543210\",\n  \"dateOfBirth\": \"1998-03-20\",\n  \"gender\": \"FEMALE\",\n  \"address\": \"789 Park Avenue\",\n  \"semester\": 1,\n  \"admissionYear\": 2022,\n  \"researchTopic\": \"Machine Learning\",\n  \"supervisorId\": 1,\n  \"courseId\": 2,\n  \"departmentId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get PG Student by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/pg-students/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "pg-students", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Update PG Student",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/pg-students/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "pg-students", "{{id}}"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Jane Smith Updated\",\n  \"rollNo\": \"MCS2022001\",\n  \"email\": \"jane.smith@college.edu\",\n  \"phone\": \"9876543210\",\n  \"dateOfBirth\": \"1998-03-20\",\n  \"gender\": \"FEMALE\",\n  \"address\": \"789 Park Avenue\",\n  \"semester\": 2,\n  \"admissionYear\": 2022,\n  \"researchTopic\": \"Deep Learning\",\n  \"supervisorId\": 1,\n  \"courseId\": 2,\n  \"departmentId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Delete PG Student",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/pg-students/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "pg-students", "{{id}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Faculty",
+      "item": [
+        {
+          "name": "Get All Faculty",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/faculty", "host": ["{{baseUrl}}"], "path": ["api", "faculty"] }
+          }
+        },
+        {
+          "name": "Create Faculty",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/faculty", "host": ["{{baseUrl}}"], "path": ["api", "faculty"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Dr. Alice Brown\",\n  \"employeeCode\": \"FAC001\",\n  \"designation\": \"Associate Professor\",\n  \"qualification\": \"PhD Computer Science\",\n  \"dateOfJoining\": \"2015-07-01\",\n  \"salary\": 85000.00,\n  \"specialization\": \"Artificial Intelligence\",\n  \"email\": \"alice.brown@college.edu\",\n  \"phone\": \"9876543210\",\n  \"cabinNo\": \"B-204\",\n  \"departmentId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get Faculty by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/faculty/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "faculty", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Update Faculty",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/faculty/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "faculty", "{{id}}"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Dr. Alice Brown\",\n  \"employeeCode\": \"FAC001\",\n  \"designation\": \"Professor\",\n  \"qualification\": \"PhD Computer Science\",\n  \"dateOfJoining\": \"2015-07-01\",\n  \"salary\": 95000.00,\n  \"specialization\": \"Machine Learning\",\n  \"email\": \"alice.brown@college.edu\",\n  \"phone\": \"9876543210\",\n  \"cabinNo\": \"B-205\",\n  \"departmentId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Delete Faculty",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/faculty/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "faculty", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Get My Faculty Profile",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/faculty/me", "host": ["{{baseUrl}}"], "path": ["api", "faculty", "me"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Departments",
+      "item": [
+        {
+          "name": "Get All Departments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/departments", "host": ["{{baseUrl}}"], "path": ["api", "departments"] }
+          }
+        },
+        {
+          "name": "Create Department",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/departments", "host": ["{{baseUrl}}"], "path": ["api", "departments"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Computer Science\",\n  \"code\": \"CS\",\n  \"hodName\": \"Dr. Robert Smith\",\n  \"email\": \"cs@college.edu\",\n  \"extensionNo\": \"1001\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get Department by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/departments/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "departments", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Update Department",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/departments/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "departments", "{{id}}"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Computer Science & Engineering\",\n  \"code\": \"CSE\",\n  \"hodName\": \"Dr. Robert Smith\",\n  \"email\": \"cse@college.edu\",\n  \"extensionNo\": \"1001\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Delete Department",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/departments/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "departments", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Patch Department",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/departments/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "departments", "{{id}}"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"hodName\": \"Dr. New HOD\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Courses",
+      "item": [
+        {
+          "name": "Get All Courses",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/courses", "host": ["{{baseUrl}}"], "path": ["api", "courses"] }
+          }
+        },
+        {
+          "name": "Create Course",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/courses", "host": ["{{baseUrl}}"], "path": ["api", "courses"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"courseTitle\": \"Bachelor of Computer Science\",\n  \"stream\": \"Science\",\n  \"totalSemesters\": 8,\n  \"durationYears\": 4,\n  \"minCredits\": 160,\n  \"level\": \"UG\",\n  \"departmentId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get Course by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/courses/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "courses", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Update Course",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/courses/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "courses", "{{id}}"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"courseTitle\": \"Bachelor of Computer Science\",\n  \"stream\": \"Science\",\n  \"totalSemesters\": 8,\n  \"durationYears\": 4,\n  \"minCredits\": 180,\n  \"level\": \"UG\",\n  \"departmentId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Delete Course",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/courses/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "courses", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Patch Course",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/courses/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "courses", "{{id}}"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"minCredits\": 160\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Subjects",
+      "item": [
+        {
+          "name": "Get All Subjects",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/subjects", "host": ["{{baseUrl}}"], "path": ["api", "subjects"] }
+          }
+        },
+        {
+          "name": "Create Subject",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/subjects", "host": ["{{baseUrl}}"], "path": ["api", "subjects"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subjectName\": \"Data Structures\",\n  \"subjectCode\": \"CS301\",\n  \"credits\": 4,\n  \"semester\": 3,\n  \"lectureHours\": 3,\n  \"practicalHours\": 2,\n  \"tutorialHours\": 1,\n  \"departmentId\": 1,\n  \"facultyId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get Subject by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/subjects/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "subjects", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Update Subject",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/subjects/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "subjects", "{{id}}"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subjectName\": \"Advanced Data Structures\",\n  \"subjectCode\": \"CS301\",\n  \"credits\": 4,\n  \"semester\": 3,\n  \"lectureHours\": 3,\n  \"practicalHours\": 2,\n  \"tutorialHours\": 1,\n  \"departmentId\": 1,\n  \"facultyId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Delete Subject",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/subjects/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "subjects", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Patch Subject",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/subjects/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "subjects", "{{id}}"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"facultyId\": 2\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get My Subjects (Faculty)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/subjects/mine", "host": ["{{baseUrl}}"], "path": ["api", "subjects", "mine"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Attendance",
+      "item": [
+        {
+          "name": "Get All Attendance",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/attendance", "host": ["{{baseUrl}}"], "path": ["api", "attendance"] }
+          }
+        },
+        {
+          "name": "Create Attendance",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/attendance", "host": ["{{baseUrl}}"], "path": ["api", "attendance"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lectureDate\": \"2025-08-01\",\n  \"startTime\": \"09:00:00\",\n  \"endTime\": \"10:00:00\",\n  \"status\": \"PRESENT\",\n  \"remarks\": \"On time\",\n  \"lectureNumber\": 1,\n  \"semester\": 3,\n  \"studentId\": 1,\n  \"subjectId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Bulk Create Attendance",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/attendance/bulk", "host": ["{{baseUrl}}"], "path": ["api", "attendance", "bulk"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subjectId\": 1,\n  \"date\": \"2025-08-01\",\n  \"lectureNumber\": 2,\n  \"records\": [\n    { \"studentId\": 1, \"status\": \"PRESENT\" },\n    { \"studentId\": 2, \"status\": \"ABSENT\" },\n    { \"studentId\": 3, \"status\": \"MEDICAL_LEAVE\" }\n  ]\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get Attendance by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/attendance/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "attendance", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Update Attendance",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/attendance/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "attendance", "{{id}}"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lectureDate\": \"2025-08-01\",\n  \"startTime\": \"09:00:00\",\n  \"endTime\": \"10:00:00\",\n  \"status\": \"MEDICAL_LEAVE\",\n  \"remarks\": \"Medical certificate submitted\",\n  \"lectureNumber\": 1,\n  \"semester\": 3,\n  \"studentId\": 1,\n  \"subjectId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Delete Attendance",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/attendance/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "attendance", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Get Attendance % (Student + Subject)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/attendance/student/{{studentId}}/subject/{{subjectId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "attendance", "student", "{{studentId}}", "subject", "{{subjectId}}"]
+            }
+          }
+        },
+        {
+          "name": "Get My Attendance (mine)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/attendance/mine", "host": ["{{baseUrl}}"], "path": ["api", "attendance", "mine"] }
+          }
+        },
+        {
+          "name": "Get My Attendance (me)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/attendance/me", "host": ["{{baseUrl}}"], "path": ["api", "attendance", "me"] }
+          }
+        },
+        {
+          "name": "Get Defaulters",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/attendance/defaulters", "host": ["{{baseUrl}}"], "path": ["api", "attendance", "defaulters"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Exams",
+      "item": [
+        {
+          "name": "Get All Exams",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/exams", "host": ["{{baseUrl}}"], "path": ["api", "exams"] }
+          }
+        },
+        {
+          "name": "Create Exam",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/exams", "host": ["{{baseUrl}}"], "path": ["api", "exams"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"examType\": \"MIDTERM\",\n  \"session\": \"2024-25\",\n  \"examDate\": \"2025-09-15\",\n  \"roomNumber\": \"A-101\",\n  \"maxMarks\": 50,\n  \"subjectId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get Exam by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/exams/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "exams", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Update Exam",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/exams/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "exams", "{{id}}"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"examType\": \"ENDTERM\",\n  \"session\": \"2024-25\",\n  \"examDate\": \"2025-11-20\",\n  \"roomNumber\": \"B-202\",\n  \"maxMarks\": 100,\n  \"subjectId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Delete Exam",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/exams/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "exams", "{{id}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Results",
+      "item": [
+        {
+          "name": "Get All Results",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/results", "host": ["{{baseUrl}}"], "path": ["api", "results"] }
+          }
+        },
+        {
+          "name": "Create Result",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/results", "host": ["{{baseUrl}}"], "path": ["api", "results"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"marksObtained\": 42.5,\n  \"studentId\": 1,\n  \"examId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get Result by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/results/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "results", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Update Result",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/results/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "results", "{{id}}"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"marksObtained\": 45.0,\n  \"studentId\": 1,\n  \"examId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Delete Result",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/results/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "results", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Get Student Result Summary",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/results/student/{{studentId}}/summary",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "results", "student", "{{studentId}}", "summary"]
+            }
+          }
+        },
+        {
+          "name": "Get My Results",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/results/me", "host": ["{{baseUrl}}"], "path": ["api", "results", "me"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Fees",
+      "item": [
+        {
+          "name": "Get All Fees",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/fees", "host": ["{{baseUrl}}"], "path": ["api", "fees"] }
+          }
+        },
+        {
+          "name": "Create Fee",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/fees", "host": ["{{baseUrl}}"], "path": ["api", "fees"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"feeType\": \"TUITION\",\n  \"amount\": 50000.00,\n  \"dueDate\": \"2025-09-30\",\n  \"paidDate\": null,\n  \"isPaid\": false,\n  \"semester\": 3,\n  \"studentId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get Fee by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/fees/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "fees", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Update Fee",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/fees/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "fees", "{{id}}"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"feeType\": \"TUITION\",\n  \"amount\": 50000.00,\n  \"dueDate\": \"2025-09-30\",\n  \"paidDate\": \"2025-08-15\",\n  \"isPaid\": true,\n  \"semester\": 3,\n  \"studentId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Delete Fee",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/fees/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "fees", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Get Overdue Fees",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/fees/overdue", "host": ["{{baseUrl}}"], "path": ["api", "fees", "overdue"] }
+          }
+        },
+        {
+          "name": "Get My Fees",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/fees/me", "host": ["{{baseUrl}}"], "path": ["api", "fees", "me"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Events",
+      "item": [
+        {
+          "name": "Get All Events",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/events", "host": ["{{baseUrl}}"], "path": ["api", "events"] }
+          }
+        },
+        {
+          "name": "Create Event",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/events", "host": ["{{baseUrl}}"], "path": ["api", "events"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventTitle\": \"Annual Tech Fest\",\n  \"organizer\": \"Student Council\",\n  \"venue\": \"Main Auditorium\",\n  \"dateTime\": \"2025-10-15T10:00:00\",\n  \"guestName\": \"Dr. Tech Expert\",\n  \"budgetAllocated\": 200000.00,\n  \"participantsCount\": 500,\n  \"departmentId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get Event by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/events/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "events", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Update Event",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/events/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "events", "{{id}}"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventTitle\": \"Annual Tech Fest 2025\",\n  \"organizer\": \"Student Council\",\n  \"venue\": \"Sports Ground\",\n  \"dateTime\": \"2025-10-16T09:00:00\",\n  \"guestName\": \"Dr. Innovation\",\n  \"budgetAllocated\": 250000.00,\n  \"participantsCount\": 800,\n  \"departmentId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Delete Event",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/events/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "events", "{{id}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Libraries",
+      "item": [
+        {
+          "name": "Get All Libraries",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/libraries", "host": ["{{baseUrl}}"], "path": ["api", "libraries"] }
+          }
+        },
+        {
+          "name": "Create Library",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/libraries", "host": ["{{baseUrl}}"], "path": ["api", "libraries"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Central Library\",\n  \"location\": \"Main Building, Ground Floor\",\n  \"totalBooks\": 10000,\n  \"operatingHours\": \"08:00 - 20:00\",\n  \"librarianName\": \"Mr. Kumar\",\n  \"contactNumber\": \"9876543210\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get Library by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/libraries/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "libraries", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Update Library",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/libraries/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "libraries", "{{id}}"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Central Library\",\n  \"location\": \"Main Building, Ground Floor\",\n  \"totalBooks\": 12000,\n  \"operatingHours\": \"07:00 - 21:00\",\n  \"librarianName\": \"Mr. Kumar\",\n  \"contactNumber\": \"9876543210\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Delete Library",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/libraries/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "libraries", "{{id}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Library Members",
+      "item": [
+        {
+          "name": "Get All Library Members",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/library-members", "host": ["{{baseUrl}}"], "path": ["api", "library-members"] }
+          }
+        },
+        {
+          "name": "Create Library Member",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/library-members", "host": ["{{baseUrl}}"], "path": ["api", "library-members"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"memberType\": \"STUDENT\",\n  \"memberId\": 1,\n  \"libraryId\": 1,\n  \"membershipStartDate\": \"2025-07-01\",\n  \"membershipEndDate\": \"2026-06-30\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get Library Member by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/library-members/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "library-members", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Update Library Member",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/library-members/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "library-members", "{{id}}"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"memberType\": \"STUDENT\",\n  \"memberId\": 1,\n  \"libraryId\": 1,\n  \"membershipStartDate\": \"2025-07-01\",\n  \"membershipEndDate\": \"2027-06-30\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Delete Library Member",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/library-members/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "library-members", "{{id}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Books",
+      "item": [
+        {
+          "name": "Get All Books",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/books", "host": ["{{baseUrl}}"], "path": ["api", "books"] }
+          }
+        },
+        {
+          "name": "Create Book",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/books", "host": ["{{baseUrl}}"], "path": ["api", "books"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Introduction to Algorithms\",\n  \"author\": \"Thomas H. Cormen\",\n  \"isbn\": \"978-0262033848\",\n  \"publisher\": \"MIT Press\",\n  \"edition\": 4,\n  \"totalCopies\": 10,\n  \"availableCopies\": 10,\n  \"category\": \"Computer Science\",\n  \"shelfLocation\": \"CS-A-12\",\n  \"libraryId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get Book by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/books/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "books", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Update Book",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/books/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "books", "{{id}}"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Introduction to Algorithms\",\n  \"author\": \"Thomas H. Cormen\",\n  \"isbn\": \"978-0262033848\",\n  \"publisher\": \"MIT Press\",\n  \"edition\": 4,\n  \"totalCopies\": 15,\n  \"availableCopies\": 13,\n  \"category\": \"Computer Science\",\n  \"shelfLocation\": \"CS-A-12\",\n  \"libraryId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Delete Book",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/books/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "books", "{{id}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Book Issues",
+      "item": [
+        {
+          "name": "Get All Book Issues",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/book-issues", "host": ["{{baseUrl}}"], "path": ["api", "book-issues"] }
+          }
+        },
+        {
+          "name": "Create Book Issue",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/book-issues", "host": ["{{baseUrl}}"], "path": ["api", "book-issues"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bookId\": 1,\n  \"memberId\": 1,\n  \"issueDate\": \"2025-08-01\",\n  \"dueDate\": \"2025-08-15\",\n  \"returnDate\": null,\n  \"fineAmount\": 0.0,\n  \"isReturned\": false\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get Book Issue by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/book-issues/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "book-issues", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Update Book Issue",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/book-issues/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "book-issues", "{{id}}"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bookId\": 1,\n  \"memberId\": 1,\n  \"issueDate\": \"2025-08-01\",\n  \"dueDate\": \"2025-08-15\",\n  \"returnDate\": \"2025-08-14\",\n  \"fineAmount\": 0.0,\n  \"isReturned\": true\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Delete Book Issue",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/book-issues/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "book-issues", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Return Book",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/book-issues/{{id}}/return",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "book-issues", "{{id}}", "return"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Classrooms",
+      "item": [
+        {
+          "name": "Get All Classrooms",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/classrooms", "host": ["{{baseUrl}}"], "path": ["api", "classrooms"] }
+          }
+        },
+        {
+          "name": "Create Classroom",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/classrooms", "host": ["{{baseUrl}}"], "path": ["api", "classrooms"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"roomNumber\": \"A-101\",\n  \"building\": \"Academic Block A\",\n  \"floor\": 1,\n  \"capacity\": 60,\n  \"classroomType\": \"LECTURE_HALL\",\n  \"hasProjector\": true,\n  \"hasAC\": true,\n  \"isAvailable\": true,\n  \"departmentId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get Classroom by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/classrooms/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "classrooms", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Update Classroom",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/classrooms/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "classrooms", "{{id}}"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"roomNumber\": \"A-101\",\n  \"building\": \"Academic Block A\",\n  \"floor\": 1,\n  \"capacity\": 80,\n  \"classroomType\": \"SEMINAR_ROOM\",\n  \"hasProjector\": true,\n  \"hasAC\": true,\n  \"isAvailable\": false,\n  \"departmentId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Delete Classroom",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/classrooms/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "classrooms", "{{id}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Canteens",
+      "item": [
+        {
+          "name": "Get All Canteens",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/canteens", "host": ["{{baseUrl}}"], "path": ["api", "canteens"] }
+          }
+        },
+        {
+          "name": "Create Canteen",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/canteens", "host": ["{{baseUrl}}"], "path": ["api", "canteens"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Main Canteen\",\n  \"location\": \"Block A, Ground Floor\",\n  \"operatingHours\": \"08:00 - 20:00\",\n  \"seatingCapacity\": 200,\n  \"managerName\": \"Mr. Sharma\",\n  \"contactNumber\": \"9876543210\",\n  \"isVegetarian\": false,\n  \"isActive\": true\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get Canteen by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/canteens/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "canteens", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Update Canteen",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/canteens/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "canteens", "{{id}}"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Main Canteen\",\n  \"location\": \"Block A, Ground Floor\",\n  \"operatingHours\": \"07:30 - 21:00\",\n  \"seatingCapacity\": 250,\n  \"managerName\": \"Mr. Sharma\",\n  \"contactNumber\": \"9876543210\",\n  \"isVegetarian\": true,\n  \"isActive\": true\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Delete Canteen",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/canteens/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "canteens", "{{id}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Hostels",
+      "item": [
+        {
+          "name": "Get All Hostels",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/hostel", "host": ["{{baseUrl}}"], "path": ["api", "hostel"] }
+          }
+        },
+        {
+          "name": "Create Hostel",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/hostel", "host": ["{{baseUrl}}"], "path": ["api", "hostel"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Boys Hostel Block A\",\n  \"type\": \"BOYS\",\n  \"totalRooms\": 100,\n  \"availableRooms\": 20,\n  \"wardenName\": \"Mr. Patel\",\n  \"contactNumber\": \"9876543210\",\n  \"monthlyFee\": 5000.00\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get Hostel by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/hostel/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "hostel", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Update Hostel",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/hostel/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "hostel", "{{id}}"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Boys Hostel Block A\",\n  \"type\": \"BOYS\",\n  \"totalRooms\": 120,\n  \"availableRooms\": 15,\n  \"wardenName\": \"Mr. Patel\",\n  \"contactNumber\": \"9876543210\",\n  \"monthlyFee\": 5500.00\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Delete Hostel",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/hostel/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "hostel", "{{id}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Infrastructure",
+      "item": [
+        {
+          "name": "Get All Infrastructure",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/infrastructure", "host": ["{{baseUrl}}"], "path": ["api", "infrastructure"] }
+          }
+        },
+        {
+          "name": "Create Infrastructure",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/infrastructure", "host": ["{{baseUrl}}"], "path": ["api", "infrastructure"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Sports Complex\",\n  \"type\": \"SPORTS\",\n  \"location\": \"Campus East Wing\",\n  \"area\": 5000.0,\n  \"capacity\": 1000,\n  \"isOperational\": true,\n  \"maintenanceStatus\": \"GOOD\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get Infrastructure by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/infrastructure/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "infrastructure", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Update Infrastructure",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/infrastructure/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "infrastructure", "{{id}}"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Sports Complex\",\n  \"type\": \"SPORTS\",\n  \"location\": \"Campus East Wing\",\n  \"area\": 6000.0,\n  \"capacity\": 1200,\n  \"isOperational\": true,\n  \"maintenanceStatus\": \"EXCELLENT\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Delete Infrastructure",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/infrastructure/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "infrastructure", "{{id}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "UG Programs",
+      "item": [
+        {
+          "name": "Get All UG Programs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/ug-programs", "host": ["{{baseUrl}}"], "path": ["api", "ug-programs"] }
+          }
+        },
+        {
+          "name": "Create UG Program",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/ug-programs", "host": ["{{baseUrl}}"], "path": ["api", "ug-programs"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"programName\": \"B.Tech\",\n  \"duration\": 4,\n  \"totalSeats\": 120,\n  \"eligibility\": \"12th Science with PCM\",\n  \"departmentId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get UG Program by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/ug-programs/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "ug-programs", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Update UG Program",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/ug-programs/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "ug-programs", "{{id}}"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"programName\": \"B.Tech\",\n  \"duration\": 4,\n  \"totalSeats\": 180,\n  \"eligibility\": \"12th Science with PCM min 60%\",\n  \"departmentId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Delete UG Program",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/ug-programs/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "ug-programs", "{{id}}"] }
+          }
+        }
+      ]
+    }
+  ]
+}
